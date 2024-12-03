@@ -1,38 +1,31 @@
-// Reference to HTML elements
-const  = document.querySelector("#");
-const  = document.querySelector("#");
-const  = document.querySelector("#");
+const inputField = document.querySelector("#inputField");
+const list = document.querySelector("#list");
+const addButton = document.querySelector("#addButton");
 
-// Function to add a new item to the list
 function addItem() {
-  const  = .value;
+  const inputValue = inputField.value;
+  console.log(inputValue)
 
-    // Create a new list item and give content
-    const  = document.createElement("");
-    .textContent = ;
+  const li = document.createElement("li");
+  li.textContent = inputValue;
 
-    // Create a remove button for the new list item
-    const  = document.createElement("");
-    .textContent = "Slett";
-    .classList.add("");
+  const removeButton = document.createElement("button");
+  removeButton.textContent = "Slett";
+  removeButton.classList.add("remove-btn");
 
-    // Add an event listener to the remove button
-    .addEventListener("click", function () {
-      removeItem(li)
-    });
+  removeButton.addEventListener("click", function () {
+    removeItem(li);
+  });
 
-    // Append the remove button to the list item
-    li.appendChild();
+  li.appendChild(removeButton);
 
-    // Append the list item to the list
-    list.appendChild();
+  list.appendChild(li);
+
+  inputField.value = '';
 }
 
-// Function to remove an item from the list
-function removeItem(listItem) {
-  // Remove the list item from the DOM
-  listItem.remove();
+function removeItem(li) {
+  list.removeChild(li);
 }
 
-// Event listener for the Add button
 addButton.addEventListener("click", addItem);
